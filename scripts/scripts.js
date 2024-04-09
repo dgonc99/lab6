@@ -28,7 +28,7 @@ function recalculate()
     {
         cost = duration * 213;
     }
-    costLabel.innerHTML = "$" + cost.toFixed(2);
+    costLabel.innerHTML = cost.toFixed(2);
 }
 
 /****************** model button logic ******************/
@@ -43,20 +43,21 @@ function recalculate()
 let modelButton = document.getElementById("model-button");
 modelButton.addEventListener("click", changeModel);
 
-let modelText = document.getElementById("model-text");
 function changeModel()
 {
+    let modelText = document.getElementById("model-text");
     if (modelName === "Model XYZ")
     {
         modelName = "Model CPRG";
         modelText.innerHTML = "Model CPRG";
     }
-    else 
+    else if (modelName === "Model CPRG")
     {
         modelName = "Model XYZ";
         modelText.innerHTML = "Model XYZ";
     }
     recalculate();
+    console.log(modelName)
 }
 
 /****************** duration button logic ******************/
@@ -69,9 +70,9 @@ function changeModel()
         - recalculate() the total cost/
     - finally, attach this function to the "Change Duration" pseudo-button, so it runs whenever the button is clicked.
 */
-let durationText = document.getElementById("duration-text");
 function changeDuration() 
 {
+    let durationText = document.getElementById("duration-text");
     let newDuration = prompt("Enter the new duration");
     duration = parseInt(newDuration);
     durationText.innerHTML = duration;
